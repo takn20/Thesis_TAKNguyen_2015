@@ -1,7 +1,7 @@
 % document options
-\newcommand{\myTitle}{Vestibular implants}
-\newcommand{\myTitleOnTitlePageLineOne}{Vestibular implants line 1}
-\newcommand{\myTitleOnTitlePageLineTwo}{Vestibular implants line 2}
+\newcommand{\myTitle}{Towards Vestibular Implants for Human Patients}
+\newcommand{\myTitleOnTitlePageLineOne}{-- Towards Vestibular Implants --}
+\newcommand{\myTitleOnTitlePageLineTwo}{Effective Pulse Modulation in Human Patients and Electrically Evoked Compound Action Potentials in Animal Models}
 \newcommand{\myName}{Thuy Anh Khoa Nguyen}
 \newcommand{\myProf}{Manfred Morari}
 \newcommand{\myDepartment}{Department of Information Technology and Electrical Engineering}
@@ -22,6 +22,10 @@
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage{mathtools}
+\usepackage[binary-units]{siunitx}
+\sisetup{detect-all}
+\usepackage{gensymb}
+\usepackage{color}
 
 % thesis style
 \usepackage[%
@@ -33,10 +37,27 @@
     parts
 ]{classicthesis}
 \usepackage{gentium} % font
+\usepackage[scaled]{cabin}
+%\renewcommand*\sfdefault{fvs} %cmbr%iwona
+\setkomafont{captionlabel}{\footnotesize\sffamily}
+\setkomafont{caption}{\footnotesize\sffamily}
+\setkomafont{subparagraph}{\small\rmfamily\bfseries}
 %\usepackage{MnSymbol}
+\AtBeginDocument{\renewcommand{\thepart}{\Roman{part}}} % have capital Roman numerals
+%\captionsetup{labelfont=bf,format=normal}
+
+% for quotes at beginning of chapters
 \usepackage{epigraph}
 \setlength{\epigraphwidth}{0.6\textwidth}
 \setlength{\epigraphrule}{0pt}
+
+%\usepackage{appendix}
+%\AtBeginEnvironment{subappendices}{%
+%\chapter*{Appendix}
+%\addcontentsline{toc}{chapter}{Appendices}
+%\counterwithin{figure}{section}
+%\counterwithin{table}{section}
+%}
 
 % define page size and margins for the final print
 \usepackage{geometry}
@@ -51,8 +72,12 @@ marginparwidth=3cm,
 
 % tables
 \usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 \newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
-
+\usepackage{array}
+\usepackage[flushleft]{threeparttable} % have pretty notes below table
+\usepackage{adjustbox}
+\usepackage{pdflscape}
 % algorithms
 \usepackage[chapter]{algorithm}
 \usepackage{algorithmic}
@@ -76,12 +101,12 @@ marginparwidth=3cm,
 \usetikzlibrary{external}
 \usetikzlibrary{calc}
 \usepackage{tkz-gm} % graphical models
-\usepackage{caption}
+\usepackage[format=plain,labelfont=bf]{caption}
 \usepackage{subcaption}
 
 % table
 %\usepackage{slashbox}
-\usepackage{rotating}
+%\usepackage{rotating}
 \usepackage{multirow}
 
 %\tikzexternalize
@@ -98,8 +123,8 @@ marginparwidth=3cm,
     breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
     plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
     hypertexnames=true, pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
-    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
-    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    %urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+    urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
     pdftitle={\myTitle},%
     pdfauthor={\myName, \myUni},%
     pdfsubject={},%
@@ -140,7 +165,7 @@ marginparwidth=3cm,
 \newtheorem*{remark}{Remark}
 
 % acronyms
-\PassOptionsToPackage{printonlyused,smaller}{acronym}
+\PassOptionsToPackage{smaller}{acronym} % deleted printonlyused
 \usepackage{acronym} % nice macros for handling all acronyms in the thesis
 \renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms
 
